@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
   if (pathName === "/products" || pathName === "/") {
     res.writeHead(200, { "content-type": "text/html" });
     res.end("This is the products page");
-  } else if (pathName === "/laptop") {
+  } else if (pathName === "/laptop" && id < laptopData.length) {
     res.writeHead(200, { "content-type": "text/html" });
     res.end(`This is the laptop page for ${id}`);
   } else {
