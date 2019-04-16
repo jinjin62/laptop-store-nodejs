@@ -25,8 +25,6 @@ const server = http.createServer((req, res) => {
         res.end(overviewOutput);
       });
     });
-
-
   }
 
   // LAPTOP DETAILS
@@ -36,6 +34,14 @@ const server = http.createServer((req, res) => {
       const laptop = laptopData[id];
       const output = replaceTemplate(data, laptop);
       res.end(output);
+    });
+  }
+
+  // IMAGES 
+  else if ((/\.(jpg|jpeg|png|gif)$/i).test(pathName)) {
+    fs.readFile(`${__dirname}/data/img/${pathName}`, (err, data) => {
+      res.writeHead(200, { "content-type": "image/jpg" });
+      res.end(data);
     });
   }
 
